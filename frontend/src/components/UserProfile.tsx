@@ -98,7 +98,7 @@ const UserProfile = () => {
                     <AiOutlineLogout color="red" fontSize={21} />
                   </button>
                 )}
-                cookiePolicy="single_host_origin"
+                // cookiePolicy="single_host_origin"
                 onLogoutSuccess={logout}
               />
             )}
