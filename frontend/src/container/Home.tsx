@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from "react";
 import { HiMenu } from "react-icons/hi";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { Link, Route, Routes } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
 import { Sidebar, UserProfile } from "../components";
 import { userQuery } from "../utils/data";
@@ -25,20 +24,12 @@ const Home = () => {
 
   const userInfo = fetchUser();
 
-  const navigate = useNavigate();
-
   useEffect(() => {
-    if (userInfo) {
-      const query = userQuery(userInfo?.googleId);
+    const query = userQuery(userInfo?.googleId);
 
-      client.fetch(query).then((data) => {
-        setUser(data[0]);
-      });
-    } else {
-      setTimeout(() => {
-        navigate("/login");
-      }, 3000);
-    }
+    client.fetch(query).then((data) => {
+      setUser(data[0]);
+    });
   }, []);
 
   useEffect(() => {
